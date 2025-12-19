@@ -1,0 +1,310 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Confirmación Babyshower Sophia</title>
+  <style>
+    :root{
+      --bg1:#fff7fb;
+      --bg2:#f3fbff;
+      --card: rgba(255,255,255,.82);
+      --stroke: rgba(0,0,0,.09);
+      --ink:#222;
+      --muted:#666;
+      --rose:#ff4f9a;
+      --pink:#ff7bb6;
+      --lilac:#b894ff;
+      --sky:#69d7ff;
+      --mint:#66f0c1;
+      --gold:#ffd56a;
+      --shadow: 0 18px 55px rgba(27, 41, 86, .14);
+      --radius: 26px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: ui-rounded, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      color:var(--ink);
+      background:
+        radial-gradient(1200px 600px at 15% 0%, rgba(255,123,182,.35), transparent 60%),
+        radial-gradient(900px 500px at 85% 15%, rgba(105,215,255,.35), transparent 60%),
+        radial-gradient(1000px 700px at 65% 100%, rgba(184,148,255,.28), transparent 60%),
+        linear-gradient(180deg, var(--bg1), var(--bg2));
+      padding: 26px 14px 60px;
+    }
+    .wrap{ max-width: 900px; margin: 0 auto; }
+    .hero{
+      background: linear-gradient(135deg, rgba(255,255,255,.86), rgba(255,255,255,.62));
+      border:1px solid var(--stroke);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+      position:relative;
+      padding: 22px 16px;
+    }
+    .top{
+      display:flex;
+      gap:16px;
+      align-items:center;
+      justify-content:space-between;
+      flex-wrap:wrap;
+    }
+    .badge{
+      display:inline-flex;
+      gap:10px;
+      align-items:center;
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.75);
+      border: 1px solid var(--stroke);
+      font-weight: 800;
+    }
+    .dot{
+      width:10px;height:10px;border-radius:50%;
+      background: conic-gradient(from 180deg, var(--pink), var(--lilac), var(--sky), var(--mint), var(--gold), var(--pink));
+    }
+    h1{
+      margin: 10px 0 6px;
+      font-size: clamp(30px, 4.2vw, 54px);
+      line-height: 1.05;
+      letter-spacing: -1px;
+    }
+    .name{
+      background: linear-gradient(90deg, var(--rose), var(--lilac), var(--sky));
+      -webkit-background-clip:text;
+      background-clip:text;
+      color: transparent;
+      font-weight: 900;
+    }
+    .sub{
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.45;
+      max-width: 65ch;
+      font-size: 15px;
+    }
+    .grid{
+      margin-top: 14px;
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+    @media (max-width: 860px){
+      .grid{ grid-template-columns: 1fr; }
+    }
+    .card{
+      background: var(--card);
+      border: 1px solid var(--stroke);
+      border-radius: 18px;
+      padding: 14px;
+    }
+    .pillrow{
+      display:flex; flex-wrap:wrap; gap:10px; margin-top:12px;
+    }
+    .pill{
+      flex: 1 1 220px;
+      background: rgba(255,255,255,.75);
+      border: 1px solid var(--stroke);
+      border-radius: 16px;
+      padding: 12px;
+    }
+    .pill b{
+      display:block;
+      font-size: 12px;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing:.7px;
+    }
+    .pill strong{ display:block; margin-top: 4px; }
+
+    label{ display:block; font-weight:800; margin: 10px 0 6px; }
+    input, select{
+      width: 100%;
+      border-radius: 14px;
+      border: 1px solid rgba(0,0,0,.14);
+      padding: 12px 12px;
+      outline: none;
+      font-size: 15px;
+      background: rgba(255,255,255,.85);
+    }
+    input:focus, select:focus{
+      box-shadow: 0 0 0 4px rgba(105,215,255,.18);
+      border-color: rgba(105,215,255,.55);
+    }
+
+    .row{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+    @media (max-width: 520px){
+      .row{ grid-template-columns: 1fr; }
+    }
+
+    .btn{
+      width: 100%;
+      margin-top: 12px;
+      border: 0;
+      cursor: pointer;
+      padding: 14px 14px;
+      border-radius: 16px;
+      font-weight: 900;
+      letter-spacing:.2px;
+      color: white;
+      background: linear-gradient(90deg, var(--rose), var(--lilac), var(--sky));
+      box-shadow: 0 14px 30px rgba(255,79,154,.20), 0 14px 30px rgba(105,215,255,.16);
+      transition: transform .12s ease, filter .12s ease;
+    }
+    .btn:hover{ transform: translateY(-1px); filter: brightness(1.02); }
+    .btn:active{ transform: translateY(0px) scale(.99); }
+
+    .small{
+      margin-top: 10px;
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.45;
+    }
+    .ok{
+      display:none;
+      margin-top: 12px;
+      padding: 12px;
+      border-radius: 16px;
+      border: 1px solid rgba(0,0,0,.10);
+      background: rgba(102,240,193,.18);
+      font-weight: 800;
+    }
+    .err{
+      display:none;
+      margin-top: 12px;
+      padding: 12px;
+      border-radius: 16px;
+      border: 1px solid rgba(0,0,0,.10);
+      background: rgba(255,79,154,.12);
+      font-weight: 800;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <section class="hero">
+      <div class="top">
+        <div class="badge"><span class="dot"></span> Confirmación de asistencia</div>
+        <div class="badge">🗓️ 31 de enero, 2026</div>
+      </div>
+
+      <h1>Babyshower de <span class="name">Sophia</span> 🎀</h1>
+      <p class="sub">
+        Completa este formulario para confirmar si vienes, si traes acompañante (pareja) y si vienes con niños.
+      </p>
+
+      <div class="pillrow">
+        <div class="pill"><b>Fecha</b><strong>Sábado 31 de enero de 2026</strong></div>
+        <div class="pill"><b>Hora</b><strong>Por definir</strong></div>
+        <div class="pill"><b>Lugar</b><strong>Por definir</strong></div>
+      </div>
+
+      <div class="grid">
+        <div class="card">
+          <h3 style="margin:0 0 6px;">💖 Confirmación de Asistencia</h3>
+
+          <form id="rsvpForm">
+            <label>Nombre y apellido</label>
+            <input name="nombre" required placeholder="Ej: Carla Pérez" />
+
+            <label>¿Asistirás?</label>
+            <select name="asistencia" required>
+              <option value="" selected disabled>Selecciona…</option>
+              <option>Sí, asistiré</option>
+              <option>No podré asistir</option>
+            </select>
+
+            <div class="row">
+              <div>
+                <label>¿Llevarás acompañante (pareja)?</label>
+                <select name="acompanante" required>
+                  <option value="" selected disabled>Selecciona…</option>
+                  <option>Sí</option>
+                  <option>No</option>
+                </select>
+              </div>
+
+              <div>
+                <label>¿Vendrás con niños?</label>
+                <select name="ninos" required>
+                  <option value="" selected disabled>Selecciona…</option>
+                  <option>Sí</option>
+                  <option>No</option>
+                </select>
+              </div>
+            </div>
+
+            <label>Si respondiste “Sí” a niños, ¿cuántos?</label>
+            <input name="cantidad_ninos" inputmode="numeric" placeholder="Ej: 2" />
+
+            <button class="btn" type="submit">✅ Enviar confirmación</button>
+
+            <div class="ok" id="okMsg">¡Listo! Tu confirmación fue enviada 💕</div>
+            <div class="err" id="errMsg">Ups… no se pudo enviar. Abre el Google Form directo con el botón de abajo.</div>
+
+            <p class="small">
+              Si no llevas niños, deja “¿cuántos?” en blanco.
+            </p>
+          </form>
+        </div>
+
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    // ===========================
+    // CONFIGURACIÓN GOOGLE FORMS
+    // ===========================
+    // 1) Pega aquí la URL "formResponse" de tu Google Form:
+    //    Ejemplo: https://docs.google.com/forms/d/e/FORM_ID/formResponse
+    const GOOGLE_FORM_ACTION = "PEGA_AQUI_TU_LINK_FORMRESPONSE";
+
+    // 2) Reemplaza estos entry por los reales de tu Form (uno por pregunta):
+    const ENTRY = {
+      nombre: "entry.1111111111",
+      asistencia: "entry.2222222222",
+      acompanante: "entry.3333333333",
+      ninos: "entry.4444444444",
+      cantidad_ninos: "entry.5555555555",
+    };
+
+    const form = document.getElementById('rsvpForm');
+    const okMsg = document.getElementById('okMsg');
+    const errMsg = document.getElementById('errMsg');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      okMsg.style.display = "none";
+      errMsg.style.display = "none";
+
+      // Validación simple: si NO niños, limpia cantidad
+      const ninos = form.ninos.value;
+      if (ninos === "No") form.cantidad_ninos.value = "";
+
+      const fd = new FormData();
+      fd.append(ENTRY.nombre, form.nombre.value.trim());
+      fd.append(ENTRY.asistencia, form.asistencia.value);
+      fd.append(ENTRY.acompanante, form.acompanante.value);
+      fd.append(ENTRY.ninos, form.ninos.value);
+      fd.append(ENTRY.cantidad_ninos, form.cantidad_ninos.value.trim());
+
+      try{
+        // mode:no-cors: se envía sin bloquear por CORS (no podremos leer respuesta, pero guarda la respuesta)
+        await fetch(GOOGLE_FORM_ACTION, { method:"POST", mode:"no-cors", body: fd });
+        okMsg.style.display = "block";
+        form.reset();
+      }catch(err){
+        errMsg.style.display = "block";
+      }
+    });
+  </script>
+</body>
+</html>
